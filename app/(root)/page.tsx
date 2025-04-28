@@ -10,7 +10,7 @@ import {
     getLatestInterviews,
 } from "@/lib/actions/general.action";
 
-async function Home() {
+async function Page() {
     const user = await getCurrentUser();
 
     const [userInterviews, allInterview] = await Promise.all([
@@ -91,4 +91,4 @@ async function Home() {
     );
 }
 
-export default Home;
+export default Page;

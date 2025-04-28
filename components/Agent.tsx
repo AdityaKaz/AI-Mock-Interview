@@ -1,4 +1,3 @@
-
 "use client";
 
 import Image from "next/image";
@@ -119,6 +118,11 @@ const Agent = ({
         setCallStatus(CallStatus.CONNECTING);
 
         if (type === "generate") {
+            if (!userId) {
+                console.error("User ID is missing. Cannot start generation workflow.");
+                setCallStatus(CallStatus.INACTIVE);
+                return;
+            }
             await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
                 variableValues: {
                     username: userName,

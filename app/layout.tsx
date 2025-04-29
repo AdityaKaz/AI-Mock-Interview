@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${monaSans.className} antialiased pattern`} //applies font everywhere on website by using .className notation
+        className={`${monaSans.className} antialiased pattern`}
       >
         {children}
 

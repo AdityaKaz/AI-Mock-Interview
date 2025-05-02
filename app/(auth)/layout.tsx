@@ -1,3 +1,9 @@
+/*
+    Define Authentication layout :
+    1. check if user is authenticated
+    2. yes - redirect to home
+        no - pass children i.e. sign-in / sign-up
+ */
 import React,{ReactNode} from 'react'
 import {isAuthenticated} from "@/lib/actions/auth.action";
 import {redirect} from "next/navigation";

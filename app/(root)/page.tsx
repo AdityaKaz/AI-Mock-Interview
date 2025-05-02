@@ -9,9 +9,14 @@ import {
     getInterviewsByUserId,
     getLatestInterviews,
 } from "@/lib/actions/general.action";
+import {redirect} from "next/navigation";
 
 async function Page() {
     const user = await getCurrentUser();
+
+    if (!user || !user.id) {
+        redirect("/sign-in");
+    }
 
     const [userInterviews, allInterview] = await Promise.all([
         getInterviewsByUserId(user?.id!),

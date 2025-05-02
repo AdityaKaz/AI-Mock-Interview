@@ -1,3 +1,4 @@
+/* Defines theming, color palette, dark mode, custom utilities, animations, and component styling using TailwindCSS.*/
 @import "tailwindcss";
 
 @plugin "tailwindcss-animate";

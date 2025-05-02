@@ -15,6 +15,7 @@ import {signIn, signUp} from "@/lib/actions/auth.action";
 
 type FormType = 'sign-in' | 'sign-up'
 
+//Returns different validation rules based on form type
 const authFormSchema = (type: FormType) => {
     return z.object({
         name: type === 'sign-up' ? z.string().min(3) : z.string().optional(),
@@ -27,6 +28,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
     const router = useRouter()
     const formSchema = authFormSchema(type)
 
+    //initializes a form with validation rules and default empty values
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -36,10 +38,12 @@ const AuthForm = ({ type }: { type: FormType }) => {
         },
     })
 
+    //This onSubmit function handles both sign-up and sign-in form submissions
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try{
             if(type==='sign-up'){
                 const {name, email, password} = values;
+
 
                 const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
 
